@@ -1,5 +1,4 @@
 #include "../libCC/cc_debug_print.h"
-
 #include <iostream>
 
 int main()

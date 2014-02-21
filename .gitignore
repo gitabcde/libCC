@@ -1,0 +1,8 @@
+*
+!*.h
+!*.cpp
+!*.c
+!/tool/
+!/src/
+!/libCC/
+Makefile

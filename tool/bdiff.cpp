@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-
+#include "../libCC/cc_basetype.h"
 #define BUFFERSIZE 4096
 #define CC_COLOR_OFF "\033[0m" 
 #define CC_COLOR_BLACK "\033[30m"
@@ -70,21 +70,21 @@ int main()
 	{
 	  fs1.read(buffer1,BUFFERSIZE);
 	  fs2.read(buffer2,BUFFERSIZE);
-	  for(int n=0;n<BUFFERSIZE/sizeof(uint64_t);n++)
+	  for(int n=0;n<BUFFERSIZE/sizeof(cc_uint64);n++)
 	    {
-	      if(*(((uint64_t*)buffer1)+n)!=(*(((uint64_t*)buffer2)+n)))
+	      if(*(((cc_uint64*)buffer1)+n)!=(*(((cc_uint64*)buffer2)+n)))
 		{
 		  int i;
-		  for(i=0;i<sizeof(uint64_t);i++)
+		  for(i=0;i<sizeof(cc_uint64);i++)
 		    {
-		      if(*(((char*)buffer1)+i+n*sizeof(uint64_t))!=(*(((char*)buffer2)+i+n*sizeof(uint64_t))))
+		      if(*(((char*)buffer1)+i+n*sizeof(cc_uint64))!=(*(((char*)buffer2)+i+n*sizeof(cc_uint64))))
 			{
-			  std::cout<<CC_COLOR_RED<<"<<<<"<<file1<<"<<<<"<<std::endl<<(int)*(((char*)buffer1)+i+n*sizeof(uint64_t))<<CC_COLOR_OFF<<std::endl;
-			  std::cout<<CC_COLOR_RED<<">>>>"<<file2<<">>>>"<<std::endl<<(int)*(((char*)buffer2)+i+n*sizeof(uint64_t))<<CC_COLOR_OFF<<std::endl;
+			  std::cout<<CC_COLOR_RED<<"<<<<"<<file1<<"<<<<"<<std::endl<<(int)*(((char*)buffer1)+i+n*sizeof(cc_uint64))<<CC_COLOR_OFF<<std::endl;
+			  std::cout<<CC_COLOR_RED<<">>>>"<<file2<<">>>>"<<std::endl<<(int)*(((char*)buffer2)+i+n*sizeof(cc_uint64))<<CC_COLOR_OFF<<std::endl;
 			  break;
 			}
 		    }
-		  pos_diff=BUFFERSIZE*count+n*sizeof(uint64_t)+i;
+		  pos_diff=BUFFERSIZE*count+n*sizeof(cc_uint64)+i;
 		  std::cout<<CC_COLOR_RED<<"diff at "<<std::hex<<CC_COLOR_GREEN<<pos_diff+begin_pos1<<CC_COLOR_RED<<" in "<<CC_COLOR_WHITE<<file1<<CC_COLOR_RED<<" , "<<CC_COLOR_GREEN<<pos_diff+begin_pos2<<CC_COLOR_RED<<" in "<<CC_COLOR_WHITE<<file2<<CC_COLOR_RED<<" in hex, "<<std::dec<<CC_COLOR_GREEN<<pos_diff+begin_pos1<<CC_COLOR_RED<<" in "<<CC_COLOR_WHITE<<file1<<CC_COLOR_RED<<" , "<<CC_COLOR_GREEN<<pos_diff+begin_pos2<<CC_COLOR_RED<<" in "<<CC_COLOR_WHITE<<file2<<CC_COLOR_RED<<" in dec."<<std::endl;
 		  diff_found=true;
 		  break;
