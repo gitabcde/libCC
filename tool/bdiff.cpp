@@ -42,7 +42,10 @@ int main()
     {
       if(cc_eof)
 	{
-	  std::cout<<CC_COLOR_RED<<"GOT THE FILE END"<<CC_COLOR_OFF<<std::endl;
+	  if(!diff_found)
+	    std::cout<<CC_COLOR_RED<<"the two files are exactly same"<<CC_COLOR_OFF<<std::endl;
+	  else
+	    std::cout<<CC_COLOR_RED<<"GOT THE FILE END"<<CC_COLOR_OFF<<std::endl;
 	  return -1;
 	}
       char c;
