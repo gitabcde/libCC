@@ -1,5 +1,8 @@
 some usefull tools
 +------------|--------------------------------------------+
-+bdiff.cpp   |  my diff for binary file 
++bdiff	     |  my diff for binary file 
 +------------|--------------------------------------------+
++appfile     | append files into a file
++------------|--------------------------------------------+
++randnum     | get some randnum 
 +------------|--------------------------------------------+
