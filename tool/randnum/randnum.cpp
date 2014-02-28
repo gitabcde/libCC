@@ -1,6 +1,7 @@
 #include <math.h>
 #include <iostream>
 #include <sys/time.h>
+#include <stdlib.h>
 #include "../../libCC/cc_basetype.h"
 #include "../../libCC/cc_terminal.h"
 int main()
